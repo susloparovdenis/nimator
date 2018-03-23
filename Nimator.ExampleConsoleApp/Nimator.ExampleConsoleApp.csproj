@@ -56,6 +56,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Nimator.Checks.Couchbase\Nimator.Checks.Couchbase.csproj">
+      <Project>{5175d541-2ec5-4fdd-bcf0-e181477e6d6f}</Project>
+      <Name>Nimator.Checks.Couchbase</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Nimator\Nimator.csproj">
       <Project>{65687DC2-AA7D-40FB-B5E3-252E3EAAC6F4}</Project>
       <Name>Nimator</Name>
