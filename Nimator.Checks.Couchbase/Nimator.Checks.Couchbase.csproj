@@ -2,10 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Nimator.Checks.Couchbase</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="CouchbaseNetClient" Version="2.5.8" />
+    <PackageReference Include="FluentAssertions" Version="5.2.0" />
   </ItemGroup>
 
   <ItemGroup>

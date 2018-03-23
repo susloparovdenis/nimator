@@ -1,17 +1,23 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Nimator.Checks.Couchbase.Connection;
 using Nimator.Checks.Couchbase.Utlis;
 
-namespace Nimator.Checks.Couchbase
+namespace Nimator.Checks.Couchbase.DocumentsNumber
 {
+    /// <summary>
+    /// Checks that the number of documents in a bucket doesn't exceed some level
+    /// </summary>
     public class DocumentsNumberCheck : ICheck
     {
-        private readonly ICouchbaseInfoClient _client;
-
-        public DocumentsNumberCheck(ICouchbaseInfoClient client)
+        private readonly IBucketInfoProvider _provider;
+        private readonly DocumentsNumberCheckSettings _settings;
+        public DocumentsNumberCheck(IBucketInfoProvider provider, DocumentsNumberCheckSettings settings)
         {
-            Ensure.ArgumentNotNull(client, nameof(client));
-            _client = client;
+            Ensure.ArgumentNotNull(provider, nameof(provider));
+            Ensure.ArgumentNotNull(settings, nameof(settings));
+            _provider = provider;
+            _settings = settings;
         }
 
         public int MaxDocumentNumber { get; set; } = 100000;
@@ -22,7 +28,7 @@ namespace Nimator.Checks.Couchbase
         {
             try
             {
-                var number = await _client.GetDocumentsCount();
+                var number = await _provider.GetDocumentsCount(_settings.Bucket);
                 return number > MaxDocumentNumber 
                     ? new CheckResult(ShortName, NotificationLevel.Warning) 
                     : new CheckResult(ShortName, NotificationLevel.Okay);

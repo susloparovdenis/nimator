@@ -1,22 +1,35 @@
 using System;
 using FakeItEasy;
 using FluentAssertions;
+using Nimator.Checks.Couchbase.RamUtilization;
 using Xunit;
 
 namespace Nimator.Checks.Couchbase.Tests
 {
-    public class MemoryUtilizationCheckTests
+    public class RamUsageTests
     {
         [Fact]
-        public void Constructor_ThrowsArgumentNullException_GivenNullArgument()
+        public void Constructor_ThrowsArgumentNullException_GivenSettingsIsNull()
         {
             //Arrange
-
+            IRamUsageInfoProvider provider = null;
             //Act
-            void Act() => new MemoryUtilizationCheck(null);
+            void Act() => new RamUsageCheck(provider, null);
 
             //Assert
             Assert.Throws<ArgumentNullException>((Action) Act);
+        }
+
+        [Fact]
+        public void Constructor_ThrowsArgumentNullException_GivenProviderIsNull()
+        {
+            //Arrange
+            IRamUsageInfoProvider provider = null;
+            //Act
+            void Act() => new RamUsageCheck(null, new RamUsageSettings());
+
+            //Assert
+            Assert.Throws<ArgumentNullException>((Action)Act);
         }
 
         [Theory]
@@ -28,9 +41,9 @@ namespace Nimator.Checks.Couchbase.Tests
         public void RunAsync_ReturnsCorrectNotificationLevel(long used, long total, NotificationLevel expected)
         {
             //Arrange
-            var couchbaseInfoClient = A.Fake<ICouchbaseInfoClient>();
-            A.CallTo(() => couchbaseInfoClient.GetRamInfo()).Returns((used, total));
-            var memoryUtilizationCheck = new MemoryUtilizationCheck(couchbaseInfoClient);
+            var provider = A.Fake<IRamUsageInfoProvider>();
+            A.CallTo(() => provider.GetRamInfo()).Returns((used, total));
+            var memoryUtilizationCheck = new RamUsageCheck(provider, new RamUsageSettings());
 
             //Act
             var checkResult = memoryUtilizationCheck.RunAsync().Result;
@@ -45,9 +58,9 @@ namespace Nimator.Checks.Couchbase.Tests
         public void RunAsync_ReturnsError_GivenExceptionInCouchbaseClient()
         {
             //Arrange
-            var couchbaseInfoClient = A.Fake<ICouchbaseInfoClient>();
-            A.CallTo(() => couchbaseInfoClient.GetRamInfo()).Throws<Exception>();
-            var memoryUtilizationCheck = new MemoryUtilizationCheck(couchbaseInfoClient);
+            var provider = A.Fake<IRamUsageInfoProvider>();
+            A.CallTo(() => provider.GetRamInfo()).Throws<Exception>();
+            var memoryUtilizationCheck = new RamUsageCheck(provider, new RamUsageSettings());
 
             //Act
             var checkResult = memoryUtilizationCheck.RunAsync().Result;

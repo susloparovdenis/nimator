@@ -42,23 +42,20 @@
       "Name": "Demo Layer 1",
       "Checks": [
         {
-          "$type": "Nimator.NoopCheckSettings, Nimator",
-          "LevelToSimulate": "Okay" // Or one of: ["Warning", "Error", "Critical"]
+          "$type": "Nimator.Checks.Couchbase.DocumentsNumber.DocumentsNumberCheckSettings, Nimator.Checks.Couchbase",
+          "Server": "http://127.0.0.1:8091",
+          "Login": "admin",
+          "Password": "23461234623",
+          "Bucket": "gamesim-sample"
         },
         {
-          "$type": "Nimator.NoopCheckSettings, Nimator",
-          "LevelToSimulate": "Warning" // Or one of: ["Warning", "Error", "Critical"]
+          "$type": "Nimator.Checks.Couchbase.RamUtilization.RamUtilizationSettings, Nimator.Checks.Couchbase",
+          "Server": "http://127.0.0.1:8091",
+          "Login": "admin",
+          "Password": "23461234623"
         }
-      ]
-    },
-    {
-      "Name": "Demo Layer 2",
-      "Checks": [
-        {
-          "$type": "Nimator.NoopCheckSettings, Nimator",
-          "LevelToSimulate": "Error" // Or one of: ["Warning", "Error", "Critical"]
-        }
-      ]
+      ],
+      "LevelToSimulate": "Warning"
     }
   ]
 }
