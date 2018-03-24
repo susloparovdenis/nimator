@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  nimator.checks.couchbase.integrationtests:
+    image: nimatorcheckscouchbaseintegrationtests
+    build:
+      context: .
+      dockerfile: Nimator.Checks.Couchbase.IntegrationTests/Dockerfile
+  couchbase:
+    image: couchbase/server
+    ports:
+    - "8091-8093:8091-8093"

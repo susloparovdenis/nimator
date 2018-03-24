@@ -19,6 +19,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nimator.Checks.Couchbase", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nimator.Checks.Couchbase.Tests", "Nimator.Checks.Couchbase.Tests\Nimator.Checks.Couchbase.Tests.csproj", "{511F64F3-F07D-40BE-AE2E-0427957A3E22}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nimator.Checks.Couchbase.IntegrationTests", "Nimator.Checks.Couchbase.IntegrationTests\Nimator.Checks.Couchbase.IntegrationTests.csproj", "{F2A9D406-AB33-45EC-9A98-4F2BCCBD9D7D}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{BC45C0E8-463D-47D5-902D-120EE2949FF5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{511F64F3-F07D-40BE-AE2E-0427957A3E22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{511F64F3-F07D-40BE-AE2E-0427957A3E22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{511F64F3-F07D-40BE-AE2E-0427957A3E22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2A9D406-AB33-45EC-9A98-4F2BCCBD9D7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2A9D406-AB33-45EC-9A98-4F2BCCBD9D7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2A9D406-AB33-45EC-9A98-4F2BCCBD9D7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2A9D406-AB33-45EC-9A98-4F2BCCBD9D7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC45C0E8-463D-47D5-902D-120EE2949FF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC45C0E8-463D-47D5-902D-120EE2949FF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC45C0E8-463D-47D5-902D-120EE2949FF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC45C0E8-463D-47D5-902D-120EE2949FF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
