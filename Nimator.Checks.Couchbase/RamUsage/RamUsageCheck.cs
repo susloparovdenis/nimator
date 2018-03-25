@@ -2,15 +2,15 @@
 using System.Threading.Tasks;
 using Nimator.Checks.Couchbase.Utlis;
 
-namespace Nimator.Checks.Couchbase.RamUtilization
+namespace Nimator.Checks.Couchbase.RamUsage
 {
     /// <summary>
-    /// Checks if ram utilization above specified level
+    ///     Checks if ram usage above specified level
     /// </summary>
     public class RamUsageCheck : ICheck
     {
-        private readonly RamUsageSettings _settings;
         private readonly IRamUsageInfoProvider _provider;
+        private readonly RamUsageSettings _settings;
 
         public RamUsageCheck(IRamUsageInfoProvider provider, RamUsageSettings settings)
         {
@@ -27,17 +27,18 @@ namespace Nimator.Checks.Couchbase.RamUtilization
             try
             {
                 (var used, var total) = await _provider.GetRamInfo();
-                var utilization = (double)used / total;
-                if (utilization < 0 || utilization > 1 || double.IsNaN(utilization))
+                var usage = (double) used / total;
+                if (usage < 0 || usage > 1 || double.IsNaN(usage))
                     return new CheckResult(ShortName, NotificationLevel.Error,
-                        $"ram utilization is not correct: {utilization}");
-                if(utilization < _settings.MaxMemoryUtilization)
+                        $"ram info is not correct: {usage}");
+                if (usage < _settings.MaxUsage)
                     return new CheckResult(ShortName, NotificationLevel.Okay);
 
-                var notificationLevel = utilization < _settings.MaxMemoryUtilization
+                var notificationLevel = usage < _settings.MaxUsage
                     ? NotificationLevel.Okay
                     : NotificationLevel.Warning;
-                return new CheckResult(ShortName, NotificationLevel.Warning, $"RAM utilization is: {utilization:P}, max is: {_settings.MaxMemoryUtilization:P}");
+                return new CheckResult(ShortName, NotificationLevel.Warning,
+                    $"RAM usage is: {usage:P}, max is: {_settings.MaxUsage:P}");
             }
             catch (Exception e)
             {

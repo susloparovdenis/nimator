@@ -4,65 +4,70 @@ using System.Reflection;
 using System.Threading;
 using log4net;
 using log4net.Config;
-
+ 
 namespace Nimator.ExampleConsoleApp
 {
     class Program
     {
         // This would probably be a bit higher (e.g. 60 secs or even more) and in
         // the App.config for production scenarios:
-        private const int CheckIntervalInSecs = 15;
-
+        const int CheckIntervalInSecs = 15;
+ 
         // For ease of demo this is an embedded resource, but it could also be in a
         // seperate file or whatever persistence you'd prefer. It might be good not
         // to persist it in a database system, since your monitoring app should pro-
         // bably have as few dependencies as possible...
-        private static readonly string configResource = Assembly.GetExecutingAssembly().GetName().Name + ".config.json";
-        private static readonly string log4netConfigResource = Assembly.GetExecutingAssembly().GetName().Name + ".log4netconfig.json";
-
+        static readonly string configResource = "config.json";
+        static readonly string log4netConfigResource = "log4net.config";
+        
         // See app.config for logging setup.
-        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger("Nimator","Nimator");
-
+        static readonly log4net.ILog logger = log4net.LogManager.GetLogger("Nimator","Nimator");
+ 
         static void Main()
         {
-            var logRepository = LogManager.CreateRepository("Nimator");
-            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(log4netConfigResource))
-            {
-               
-                XmlConfigurator.Configure(logRepository, stream); // Alternatively: http://stackoverflow.com/a/10204514/419956
-            }
-
+            ConfigureLog4net();
+ 
             AppDomain.CurrentDomain.UnhandledException += UnhandledExceptionLogger;
-
+ 
             logger.Info("Creating Nimator.");
-
-            var nimator = CreateNimator();
-
+ 
+            var nimatorSettingsJson = ReadResource(configResource);
+            var nimator = Nimator.FromSettings(logger,nimatorSettingsJson);
+ 
             logger.Info($"Nimator created. Starting timer for cycle every {CheckIntervalInSecs} seconds.");
-
+ 
             using (new Timer(_ => nimator.TickSafe(logger), null, 0, CheckIntervalInSecs * 1000))
             {
                 Console.WriteLine("Press any key to exit.");
                 Console.ReadKey();
             }
-
             logger.Info("Shutting down.");
         }
-
-        private static INimator CreateNimator()
+ 
+        static void ConfigureLog4net()
         {
-            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(configResource))
-            using (var reader = new StreamReader(stream))
+            var logRepository = LogManager.CreateRepository("Nimator");
+            var assemblyName = Assembly.GetExecutingAssembly().GetName().Name;
+            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream($"{assemblyName}.{log4netConfigResource}"))
             {
-                var json = reader.ReadToEnd();
-                return Nimator.FromSettings(logger, json);
+                XmlConfigurator.Configure(logRepository, stream); // Alternatively: http://stackoverflow.com/a/10204514/419956
             }
         }
-
-        private static void UnhandledExceptionLogger(object sender, UnhandledExceptionEventArgs eventArgs)
+ 
+        static string ReadResource(string name)
+        {
+            var assemblyName = Assembly.GetExecutingAssembly().GetName().Name;
+            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream($"{assemblyName}.{name}"))
+            using (var reader = new StreamReader(stream))
+            {
+                return reader.ReadToEnd();            }
+        }
+ 
+ 
+        static void UnhandledExceptionLogger(object sender, UnhandledExceptionEventArgs eventArgs)
         {
             var exc = eventArgs.ExceptionObject as Exception;
-
+ 
             if (exc != null)
             {
                 logger.Fatal("Unhandled exception occurred.", exc);

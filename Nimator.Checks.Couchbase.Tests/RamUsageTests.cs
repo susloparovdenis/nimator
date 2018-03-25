@@ -1,37 +1,13 @@
 using System;
 using FakeItEasy;
 using FluentAssertions;
-using Nimator.Checks.Couchbase.RamUtilization;
+using Nimator.Checks.Couchbase.RamUsage;
 using Xunit;
 
 namespace Nimator.Checks.Couchbase.Tests
 {
     public class RamUsageTests
     {
-        [Fact]
-        public void Constructor_ThrowsArgumentNullException_GivenSettingsIsNull()
-        {
-            //Arrange
-            IRamUsageInfoProvider provider = null;
-            //Act
-            void Act() => new RamUsageCheck(provider, null);
-
-            //Assert
-            Assert.Throws<ArgumentNullException>((Action) Act);
-        }
-
-        [Fact]
-        public void Constructor_ThrowsArgumentNullException_GivenProviderIsNull()
-        {
-            //Arrange
-            IRamUsageInfoProvider provider = null;
-            //Act
-            void Act() => new RamUsageCheck(null, new RamUsageSettings());
-
-            //Assert
-            Assert.Throws<ArgumentNullException>((Action)Act);
-        }
-
         [Theory]
         [InlineData(16L, 100L, NotificationLevel.Warning)]
         [InlineData(14L, 100L, NotificationLevel.Okay)]
@@ -52,6 +28,34 @@ namespace Nimator.Checks.Couchbase.Tests
             checkResult.Level.Should().Be(expected);
         }
 
+        [Fact]
+        public void Constructor_ThrowsArgumentNullException_GivenProviderIsNull()
+        {
+            //Arrange
+            IRamUsageInfoProvider provider = null;
+
+            //Act
+            void Act() => new RamUsageCheck(provider, new RamUsageSettings());
+
+            //Assert
+            Assert.Throws<ArgumentNullException>((Action) Act);
+        }
+
+        [Fact]
+        public void Constructor_ThrowsArgumentNullException_GivenSettingsIsNull()
+        {
+            //Arrange
+            IRamUsageInfoProvider provider = null;
+
+            //Act
+            void Act()
+            {
+                new RamUsageCheck(provider, null);
+            }
+
+            //Assert
+            Assert.Throws<ArgumentNullException>((Action) Act);
+        }
 
 
         [Fact]

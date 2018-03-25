@@ -1,0 +1,33 @@
+﻿{
+  "Notifiers": [
+    {
+      "$type":
+        "Nimator.Checks.Couchbase.IntegrationTests.NotifierMockSettings, Nimator.Checks.Couchbase.IntegrationTests"
+    }
+  ],
+
+  "Layers": [
+    {
+      "Name": "Demo Layer 1",
+      "Checks": [
+        {
+          "$type": "Nimator.Checks.Couchbase.DocumentsNumber.DocumentsNumberCheckSettings, Nimator.Checks.Couchbase",
+          "Server": "http://127.0.0.1:8091",
+          "Login": "admin",
+          "Password": "23461234623",
+          "Bucket": "test-bucket",
+          "MaxDocumentNumber": 500
+        },
+        {
+          "$type": "Nimator.Checks.Couchbase.RamUsage.RamUsageSettings, Nimator.Checks.Couchbase",
+          "Server": "http://127.0.0.1:8091",
+          "Login": "admin",
+          "Password": "23461234623",
+          "MaxUsage": "1"
+
+        }
+      ],
+      "LevelToSimulate": "Warning"
+    }
+  ]
+}

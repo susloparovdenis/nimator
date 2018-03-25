@@ -49,7 +49,7 @@
           "Bucket": "gamesim-sample"
         },
         {
-          "$type": "Nimator.Checks.Couchbase.RamUtilization.RamUtilizationSettings, Nimator.Checks.Couchbase",
+          "$type": "Nimator.Checks.Couchbase.RamUsage.RamUsageSettings, Nimator.Checks.Couchbase",
           "Server": "http://127.0.0.1:8091",
           "Login": "admin",
           "Password": "23461234623"

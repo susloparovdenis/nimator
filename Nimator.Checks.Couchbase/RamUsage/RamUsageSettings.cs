@@ -1,13 +1,13 @@
 ﻿using Nimator.Checks.Couchbase.Connection;
 
-namespace Nimator.Checks.Couchbase.RamUtilization
+namespace Nimator.Checks.Couchbase.RamUsage
 {
     public class RamUsageSettings : ConnectionSettings, ICheckSettings
     {
         /// <summary>
-        /// Percentage. Float number from 0 to 1
+        ///     Percentage. Float number from 0 to 1
         /// </summary>
-        public double MaxMemoryUtilization { get; set; } = 0.15;
+        public double MaxUsage { get; set; } = 0.15;
 
         public ICheck ToCheck()
         {

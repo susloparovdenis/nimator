@@ -1,5 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.0</TargetFramework>
@@ -10,21 +9,17 @@
     <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
     <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
   </PropertyGroup>
-
   <ItemGroup>
     <None Remove="config.json" />
   </ItemGroup>
-
   <ItemGroup>
     <EmbeddedResource Include="config.json" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="log4net" Version="2.0.8" />
   </ItemGroup>
-
   <ItemGroup>
+    <ProjectReference Include="..\Nimator.Checks.Couchbase\Nimator.Checks.Couchbase.csproj" />
     <ProjectReference Include="..\Nimator\Nimator.csproj" />
   </ItemGroup>
-
 </Project>

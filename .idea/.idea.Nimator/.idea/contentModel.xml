@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$USER_HOME$/.Rider2017.3/system/resharper-host/local/Transient/ReSharperHost/v11/SolutionCaches/_Nimator.-285605664.00" t="ExcludeRecursive" />
+    <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.3.1/build/netcoreapp1.0/xunit.runner.reporters.netcoreapp10.dll" t="Include" />
+    <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.3.1/build/netcoreapp1.0/xunit.runner.utility.netcoreapp10.dll" t="Include" />
+    <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.3.1/build/netcoreapp1.0/xunit.runner.visualstudio.dotnetcore.testadapter.dll" t="Include" />
+    <e p="$PROJECT_DIR$" t="IncludeFlat">
+      <e p="Nimator" t="IncludeRecursive">
+        <e p="AmbientTimeProvider.cs" t="Include" />
+        <e p="CheckResult.cs" t="Include" />
+        <e p="CriticalNimatorResult.cs" t="Include" />
+        <e p="ICheck.cs" t="Include" />
+        <e p="ICheckResult.cs" t="Include" />
+        <e p="ICheckSettings.cs" t="Include" />
+        <e p="ILayer.cs" t="Include" />
+        <e p="ILayerResult.cs" t="Include" />
+        <e p="INimator.cs" t="Include" />
+        <e p="INimatorEngine.cs" t="Include" />
+        <e p="INimatorResult.cs" t="Include" />
+        <e p="INotifier.cs" t="Include" />
+        <e p="Layer.cs" t="Include" />
+        <e p="LayerResult.cs" t="Include" />
+        <e p="Nimator.cs" t="Include" />
+        <e p="Nimator.csproj" t="IncludeRecursive" />
+        <e p="Nimator.nuspec" t="Include" />
+        <e p="NimatorEngine.cs" t="Include" />
+        <e p="NimatorResult.cs" t="Include" />
+        <e p="NoopCheck.cs" t="Include" />
+        <e p="NoopCheckSettings.cs" t="Include" />
+        <e p="NotificationCommunicationException.cs" t="Include" />
+        <e p="NotificationException.cs" t="Include" />
+        <e p="NotificationLevel.cs" t="Include" />
+        <e p="Notifiers" t="Include">
+          <e p="ConsoleNotifier.cs" t="Include" />
+          <e p="OpsGenieAlertCreateRequest.cs" t="Include" />
+          <e p="OpsGenieHeartbeatRequest.cs" t="Include" />
+          <e p="OpsGenieNotifier.cs" t="Include" />
+          <e p="OpsGenieRequest.cs" t="Include" />
+          <e p="SlackMessage.cs" t="Include" />
+          <e p="SlackNotifier.cs" t="Include" />
+        </e>
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="Settings" t="Include">
+          <e p="ConsoleSettings.cs" t="Include" />
+          <e p="LayerSettings.cs" t="Include" />
+          <e p="NimatorSettings.cs" t="Include" />
+          <e p="NotifierSettings.cs" t="Include" />
+          <e p="OpsGenieSettings.cs" t="Include" />
+          <e p="SlackSettings.cs" t="Include" />
+        </e>
+        <e p="Util" t="Include">
+          <e p="ExtendedWebClient.cs" t="Include" />
+          <e p="SimpleRestUtils.cs" t="Include" />
+          <e p="StringExtensions.cs" t="Include" />
+          <e p="WebExceptionExtensions.cs" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Nimator.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="Nimator.Checks.Couchbase" t="IncludeRecursive">
+        <e p="Connection" t="Include">
+          <e p="ConnectionSettings.cs" t="Include" />
+          <e p="CouchbaseClient.cs" t="Include" />
+        </e>
+        <e p="DocumentsNumber" t="Include">
+          <e p="DocumentsNumberCheck.cs" t="Include" />
+          <e p="DocumentsNumberCheckSettings.cs" t="Include" />
+          <e p="IBucketInfoProvider.cs" t="Include" />
+        </e>
+        <e p="Nimator.Checks.Couchbase.csproj" t="IncludeRecursive" />
+        <e p="RamUsage" t="Include">
+          <e p="IRamUsageInfoProvider.cs" t="Include" />
+          <e p="RamUsageCheck.cs" t="Include" />
+          <e p="RamUsageSettings.cs" t="Include" />
+        </e>
+        <e p="Utlis" t="Include">
+          <e p="Ensure.cs" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netstandard2.0" t="Include">
+              <e p="Nimator.Checks.Couchbase.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="Nimator.Checks.Couchbase.IntegrationTests" t="IncludeRecursive">
+        <e p="Dockerfile" t="Include" />
+        <e p="EmbeddedResource.cs" t="Include" />
+        <e p="IntegrationTests.cs" t="Include" />
+        <e p="Nimator.Checks.Couchbase.IntegrationTests.csproj" t="IncludeRecursive" />
+        <e p="NotifierMockSettings.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="config.json" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.0" t="Include">
+              <e p="Nimator.Checks.Couchbase.IntegrationTests.AssemblyInfo.cs" t="Include" />
+              <e p="Nimator.Checks.Couchbase.IntegrationTests.Program.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="Nimator.Checks.Couchbase.Tests" t="IncludeRecursive">
+        <e p="DocumentsNumberTests.cs" t="Include" />
+        <e p="Nimator.Checks.Couchbase.Tests.csproj" t="IncludeRecursive" />
+        <e p="RamUsageTests.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.0" t="Include">
+              <e p="Nimator.Checks.Couchbase.Tests.AssemblyInfo.cs" t="Include" />
+              <e p="Nimator.Checks.Couchbase.Tests.Program.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="Nimator.ExampleConsoleApp" t="IncludeRecursive">
+        <e p="Nimator.ExampleConsoleApp.csproj" t="IncludeRecursive" />
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="config.json" t="Include" />
+        <e p="log4net.config" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.0" t="Include">
+              <e p="Nimator.ExampleConsoleApp.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="packages.config" t="Include" />
+      </e>
+      <e p="Nimator.Tests" t="IncludeRecursive">
+        <e p="AmbientTimeProviderTests.cs" t="Include" />
+        <e p="CheckResultTests.cs" t="Include" />
+        <e p="CriticalNimatorResultTests.cs" t="Include" />
+        <e p="DampTestsExtensions.cs" t="Include" />
+        <e p="LayerResultTests.cs" t="Include" />
+        <e p="LayerTests.cs" t="Include" />
+        <e p="Nimator.Tests.csproj" t="IncludeRecursive" />
+        <e p="NimatorEngineTests.cs" t="Include" />
+        <e p="NimatorResultTests.cs" t="Include" />
+        <e p="NimatorTests.cs" t="Include" />
+        <e p="NoopCheckSettingsTests.cs" t="Include" />
+        <e p="NoopCheckTests.cs" t="Include" />
+        <e p="NotificationCommunicationExceptionTests.cs" t="Include" />
+        <e p="NotificationExceptionTests.cs" t="Include" />
+        <e p="Notifiers" t="Include">
+          <e p="ConsoleNotifierTests.cs" t="Include" />
+          <e p="NotifierTests.cs" t="Include" />
+          <e p="OpsGenieNotifierTests.cs" t="Include" />
+          <e p="SlackNotifierTests.cs" t="Include" />
+        </e>
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="Settings" t="Include">
+          <e p="ConsoleSettingsTests.cs" t="Include" />
+          <e p="LayerSettingsTests.cs" t="Include" />
+          <e p="NimatorSettingsTests.cs" t="Include" />
+          <e p="NotifierSettingsTests.cs" t="Include" />
+          <e p="OpsGenieSettingsTests.cs" t="Include" />
+          <e p="SlackSettingsTests.cs" t="Include" />
+        </e>
+        <e p="Util" t="Include">
+          <e p="WebExceptionExtensionsTests.cs" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp2.0" t="Include">
+              <e p="Nimator.Tests.AssemblyInfo.cs" t="Include" />
+              <e p="Nimator.Tests.Program.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="Nimator.sln" t="IncludeFlat" />
+      <e p="Solution Items" t="Include" />
+      <e p="docker-compose.dcproj" t="IncludeRecursive" />
+      <e p="docker-compose.yml" t="Include" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="readme.md" t="Include" />
+    </e>
+  </component>
+</project>
