@@ -2,6 +2,8 @@
 using System.IO;
 using System.Reflection;
 using System.Threading;
+using log4net;
+using log4net.Config;
 
 namespace Nimator.ExampleConsoleApp
 {
@@ -16,13 +18,19 @@ namespace Nimator.ExampleConsoleApp
         // to persist it in a database system, since your monitoring app should pro-
         // bably have as few dependencies as possible...
         private static readonly string configResource = Assembly.GetExecutingAssembly().GetName().Name + ".config.json";
+        private static readonly string log4netConfigResource = Assembly.GetExecutingAssembly().GetName().Name + ".log4netconfig.json";
 
         // See app.config for logging setup.
-        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger("Nimator");
+        private static readonly log4net.ILog logger = log4net.LogManager.GetLogger("Nimator","Nimator");
 
         static void Main()
         {
-            log4net.Config.XmlConfigurator.Configure(); // Alternatively: http://stackoverflow.com/a/10204514/419956
+            var logRepository = LogManager.CreateRepository("Nimator");
+            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(log4netConfigResource))
+            {
+               
+                XmlConfigurator.Configure(logRepository, stream); // Alternatively: http://stackoverflow.com/a/10204514/419956
+            }
 
             AppDomain.CurrentDomain.UnhandledException += UnhandledExceptionLogger;
 
