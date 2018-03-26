@@ -1,3 +1,5 @@
+using System;
+using System.Diagnostics;
 using FakeItEasy;
 using FluentAssertions;
 using log4net;
@@ -10,8 +12,26 @@ namespace Nimator.Checks.Couchbase.IntegrationTests
     ///     Database storage location: ./database
     ///     Contains one bucket - gamesim-sample with 586 documents
     /// </summary>
-    public class IntegrationTests
+    public class IntegrationTests: IDisposable
     {
+        public IntegrationTests()
+        {
+            DockerCompose("up -d");
+        }
+
+        private static void DockerCompose(string param)
+        {
+            var processStartInfo = new ProcessStartInfo
+            {
+                FileName = "docker-compose",
+                Arguments = $"-f ../../../../docker-compose.yml {param}"
+            };
+            var process = Process.Start(processStartInfo);
+
+            process.WaitForExit();
+            Assert.Equal(0, process.ExitCode);
+        }
+
         [Fact]
         public void IntegrationWithDatabaseAndNimator()
         {
@@ -25,7 +45,7 @@ namespace Nimator.Checks.Couchbase.IntegrationTests
             INimatorResult nimatorResult = null;
             A.CallTo(() => notifier.Notify(A<INimatorResult>._))
                 .Invokes(call => nimatorResult = (INimatorResult) call.Arguments[0]);
-            
+
             //Act
             nimator.TickSafe(logger);
 
@@ -38,6 +58,11 @@ namespace Nimator.Checks.Couchbase.IntegrationTests
             layerResult.CheckResults.Should().HaveCount(2)
                 .And.ContainSingle(r => r.CheckName == "DocumentsNumberCheck" && r.Level == NotificationLevel.Warning)
                 .And.ContainSingle(r => r.CheckName == "RamUsageCheck" && r.Level == NotificationLevel.Okay);
+        }
+
+        public void Dispose()
+        {
+            DockerCompose("down");
         }
     }
 }
